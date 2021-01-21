@@ -1,0 +1,19 @@
+{
+  "name": "email-helper",
+  "version": "0.1.0",
+  "description": "Email Helper",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Carmelo Giuliano",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^11.2.0",
+    "electron-reloader": "^1.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta1"
+  }
+}
