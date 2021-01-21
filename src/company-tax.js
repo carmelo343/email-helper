@@ -18,13 +18,13 @@ btnSubmit = document.getElementById("btnSubmit");
 
 
 
-btnSubmit.addEventListener("click", function () {
+btnSubmit.addEventListener("click", async function () {
   const options = {
     files: filePath,
     from: [/{{clientFirstName}}/g, /{{clientLastName}}/g, /{{companyName}}/g, /{{companyEntityType}}/g, /{{financialYear}}/g, /{{amountPayable}}/g, /{{amountRefundable}}/g, /{{additionalInfo}}/g],
     to: [clientFirstName.value, clientLastName.value, companyName.value, companyEntityType.value, financialYear.value, amountPayable.value, amountRefundable.value, additionalInfo.value]
   };
 
-  const results = replace(options);
+  const results = await replace(options);
 
 });
