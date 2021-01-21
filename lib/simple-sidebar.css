@@ -28,6 +28,7 @@
 
 #page-content-wrapper {
   min-width: 100vw;
+  padding: 2rem;
 }
 
 #wrapper.toggled #sidebar-wrapper {
