@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Email Helper</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../lib/simple-sidebar.css" rel="stylesheet">
-    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
 </head>
 
 <body>
@@ -33,30 +33,31 @@
                 <form>
                     <div class="row mb-3">
                         <label class="col-sm-2 form-label">Client: </label>
-                        <input type="text" class="col-sm form-control" placeholder="Given Name">
-                        <input type="text" class="col-sm form-control" placeholder="Surname">
+                        <input type="text" id="clientFirstName" class="col-sm form-control" placeholder="Given Name">
+                        <input type="text" id="clientLastName" class="col-sm form-control" placeholder="Surname">
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 form-label">Company: </label>
-                        <input type="text" class="col-sm form-control" placeholder="Compnay Name">
-                        <input type="text" class="col-sm form-control" placeholder="Entity Type">
+                        <input type="text" id="companyName" class="col-sm form-control" placeholder="Compnay Name">
+                        <input type="text" id="companyEntityType" class="col-sm form-control" placeholder="Entity Type">
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 form-label">Financial Year: </label>
-                        <input type="date" class="col-sm form-control">
+                        <input type="date" id="financialYear" class="col-sm form-control">
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 form-label">Payable: </label>
-                        <input type="text" class="col-sm form-control" placeholder="Amount">
+                        <input type="text" id="amountPayable" class="col-sm form-control" placeholder="Amount">
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 form-label">Refundable: </label>
-                        <input type="text" class="col-sm form-control" placeholder="Amount">
+                        <input type="text" id="amountRefundable" class="col-sm form-control" placeholder="Amount">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Additional Info</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="additionalInfo" rows="3"></textarea>
                     </div>
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Generate Email</button>
                 </form>
             </div>
         </div>
@@ -64,6 +65,9 @@
 
     </div>
     <!-- /#wrapper -->
+
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="company-tax.js"></script>
 
 </body>
 

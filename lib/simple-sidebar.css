@@ -6,6 +6,7 @@
 
  #wrapper {
     overflow-x: hidden;
+    user-select: none;
  }
 
 #sidebar-wrapper {
