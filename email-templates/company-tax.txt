@@ -1,13 +1,13 @@
-EMAIL SUBJECT: {{companyName}} [ENTITY TYPE][FINANCIAL YEAR] Company Income Tax Return - [AMOUNT][PAYABLE OR REFUNDABLE] [IF PAYABLE, ADD phrase “DUE [DUE DATE]]
+EMAIL SUBJECT: {{companyName}} {{companyEntityType}} {{financialYear}} Company Income Tax Return - [AMOUNT][PAYABLE OR REFUNDABLE] [IF PAYABLE, ADD phrase “DUE [DUE DATE]]
 
 
 EMAIL CONTENT:
 
-Dear [CLIENT NAME],
+Dear {{clientFirstName}},
  
 Company Income Tax Return For The Year Ended In [30-JUNE-”YEAR”]
  
-We confirm we have completed [COMPANY NAME][ENTITY TYPE] Pty Ltd income tax return and, accordingly, please now find attached the following: 
+We confirm we have completed {{companyName}} {{companyEntityType}} Pty Ltd income tax return and, accordingly, please now find attached the following: 
  
 2020 Company Income Tax Return (Client Copy) – showing [$AMOUNT] [PAYABLE OR REFUNDABLE]. [IF REFUND, ADD phrase “(Please confirm bank details)”] 
 
@@ -19,7 +19,7 @@ Electronic Lodgement (ELD) Declaration form – please sign Part A [IF REFUND, A
 
 Our Invoice
  
-[ADDITIONAL INFO] 
+{{additionalInfo}} 
 
 Would you kindly peruse the return and supporting schedules, and if in order, sign the ELD Declaration where indicated and return it to this office, retaining the Client Copy for your records. 
  
