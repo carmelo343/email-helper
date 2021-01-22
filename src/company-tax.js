@@ -1,44 +1,35 @@
+const $ = jQuery = require('jquery');
 const electron = require('electron');
-const {shell} = require('electron');
+const { shell } = require('electron');
+const { get } = require('http');
 const path = require('path');
 const replace = require('replace-in-file');
-
-
-
+var emlformat = require('eml-format');
+const { render, renderFile } = require('template-file');
+const fs = require('fs');
 const emlTemplatePath = process.env.PWD + '/eml-templates/';
 
-//#region form data
-clientFirstName = document.getElementById('clientFirstName');
-clientLastName = document.getElementById('clientLastName');
-companyName = document.getElementById('companyName');
-companyEntityType = document.getElementById('companyEntityType');
-financialYear = document.getElementById('financialYear');
-amountPayable = document.getElementById('amountPayable');
-amountRefundable = document.getElementById('amountRefundable');
-additionalInfo = document.getElementById('additionalInfo');
-btnSubmit = document.getElementById('btnSubmit');
-//#endregion
+$(function () {
 
-
-btnSubmit.addEventListener("click", async function () {
-  fs = require('fs');
-  fs.copyFile(emlTemplatePath + 'company-tax.eml', emlTemplatePath + 'company-tax-generated.eml', (err) => {
-    if (err) throw err;
+  $('#btnSubmit').on('click', function () {
+    let formData = getFormData();
+    let email = JSON.parse(fs.readFileSync(emlTemplatePath + 'company-tax.json'));
+    let str = render(email.subject, formData);
+    alert(str);
   });
-
-  const options = {
-    files: emlTemplatePath + 'company-tax-generated.eml',
-    from: [/{{clientFirstName}}/g, /{{clientLastName}}/g, /{{companyName}}/g, /{{companyEntityType}}/g, /{{financialYear}}/g, /{{amountPayable}}/g, /{{amountRefundable}}/g, /{{additionalInfo}}/g],
-    to: [clientFirstName.value, clientLastName.value, companyName.value, companyEntityType.value, financialYear.value, amountPayable.value, amountRefundable.value, additionalInfo.value]
-  };
-  const results = await replace(options);
-  
-  
-  shell.openPath(emlTemplatePath + 'company-tax-generated.eml');
-
-  var dddd = 0;
 
 });
 
-
-
+function getFormData() {
+  var data = {
+    clientFirstName: $('#clientFirstName').val(),
+    clientLastName: $('#clientLastName').val(),
+    companyName: $('#companyName').val(),
+    companyEntityType: $('#companyEntityType').val(),
+    financialYear: $('#financialYear').val(),
+    amountPayable: $('#amountPayable').val(),
+    amountRefundable: $('#amountRefundable').val(),
+    additionalInfo: $('#additionalInfo').val(),
+  }
+  return data;
+}

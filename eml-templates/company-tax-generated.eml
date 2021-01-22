@@ -1,5 +1,5 @@
 To: User <user@emailexample.demo>
-Subject: {{companyName}} {{companyEntityType}} {{financialYear}} Company Income Tax Return - [AMOUNT][PAYABLE OR REFUNDABLE] [IF PAYABLE, ADD phrase DUE [DUE DATE]]
+Subject:    Company Income Tax Return - [AMOUNT][PAYABLE OR REFUNDABLE] [IF PAYABLE, ADD phrase DUE [DUE DATE]]
 X-Unsent: 1
 Content-Type: text/html
 
@@ -9,7 +9,7 @@ Content-Type: text/html
 
 <p><b><u>Company Income Tax Return For The Year Ended In [30-JUNE-"YEAR"]</b></u></p>
 
-<p>We confirm we have completed {{companyName}} {{companyEntityType}} Pty Ltd income tax return and, accordingly, please now find attached the following:</p>
+<p>We confirm we have completed   Pty Ltd income tax return and, accordingly, please now find attached the following:</p>
 <ul>
   <li>2020 Company Income Tax Return (Client Copy) - showing [$AMOUNT] [PAYABLE OR REFUNDABLE]. [IF REFUND, ADD phrase "(Please confirm bank details)"]</li>
   <li>2020 Financials</li>
@@ -18,7 +18,7 @@ Content-Type: text/html
   <li>Our Invoice</li>
 </ul>
 
-<p>{{additionalInfo}}</p>
+<p></p>
 
 <p>Would you kindly peruse the return and supporting schedules, 
 and if in order, sign the ELD Declaration where indicated and 

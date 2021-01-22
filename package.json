@@ -21,10 +21,12 @@
     "electron-reloader": "^1.2.0"
   },
   "dependencies": {
-    "bootstrap": "^5.0.0-beta1",
+    "bootstrap": "^4.6.0",
     "electron-squirrel-startup": "^1.0.0",
     "eml-format": "^0.6.1",
-    "replace-in-file": "^6.1.0"
+    "jquery": "^3.5.1",
+    "replace-in-file": "^6.1.0",
+    "template-file": "^5.0.1"
   },
   "config": {
     "forge": {
