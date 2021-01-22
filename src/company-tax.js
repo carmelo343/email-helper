@@ -1,6 +1,9 @@
 const electron = require('electron');
+const {shell} = require('electron');
 const path = require('path');
 const replace = require('replace-in-file');
+
+
 
 const emlTemplatePath = process.env.PWD + '/eml-templates/';
 
@@ -28,8 +31,12 @@ btnSubmit.addEventListener("click", async function () {
     from: [/{{clientFirstName}}/g, /{{clientLastName}}/g, /{{companyName}}/g, /{{companyEntityType}}/g, /{{financialYear}}/g, /{{amountPayable}}/g, /{{amountRefundable}}/g, /{{additionalInfo}}/g],
     to: [clientFirstName.value, clientLastName.value, companyName.value, companyEntityType.value, financialYear.value, amountPayable.value, amountRefundable.value, additionalInfo.value]
   };
-
   const results = await replace(options);
+  
+  
+  shell.openPath(emlTemplatePath + 'company-tax-generated.eml');
+
+  var dddd = 0;
 
 });
 
