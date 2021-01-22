@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.0.0-beta1",
+    "eml-format": "^0.6.1",
     "replace-in-file": "^6.1.0"
   }
 }
