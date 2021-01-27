@@ -6,7 +6,6 @@ const path = require('path');
 //const replace = require('replace-in-file');
 const { render, renderFile } = require('template-file');
 const fs = require('fs');
-const { error } = require('console');
 
 const templatePath = process.cwd() + '/eml-templates/';
 //const templatePath = process.cwd() + '/resources/app/eml-templates/';
@@ -15,8 +14,10 @@ let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\
 
 $(function () {
 
-  $('input[name=taxType]').on("change", function() {
-    if($(this).val() === 'payable') {
+  initFinancialYearSelect();
+
+  $('input[name=taxType]').on("change", function () {
+    if ($(this).val() === 'payable') {
       $('#payableDueDateDiv').show();
     }
     else {
@@ -61,4 +62,18 @@ function getFormData() {
   }
 
   return data;
+}
+
+function initFinancialYearSelect() {
+  let current = new Date().getFullYear();
+  let min = current - 10;
+  let max = current + 10;
+  let select = $('#financialYear');
+
+  for (let i = min; i <= max; i++) {
+    $('#financialYear').append($('<option>', {
+      value: i,
+      text: i
+    }));
+  }
 }

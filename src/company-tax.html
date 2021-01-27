@@ -76,10 +76,6 @@
                 <input type="text" id="companyEntityType" class="col-sm form-control" placeholder="Entity Type">
               </div>
               <div class="row mb-3">
-                <label class="col-sm-2 form-label">Financial Year: </label>
-                <input type="date" id="financialYear" class="col-sm form-control">
-              </div>
-              <div class="row mb-3">
                 <label class="col-sm-2 form-label">Payable/Refundable: </label>
                 <input type="text" id="taxAmount" class="col-sm form-control" placeholder="Amount">
                 <div class="col-sm">
@@ -93,10 +89,16 @@
                   <input type="date" id="payableDueDate" class="col-sm form-control">
                 </div>
               </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 form-label">Financial Year: </label>
+                <select class="col-sm custom-select" id="financialYear">
+                  <option value="" disabled selected>-- Select Year --</option>
+                </select>
+              </div>
               
               <div class="mb-3">
                 <label class="form-label">Additional Info</label>
-                <textarea class="form-control" id="additionalInfo" rows="3"></textarea>
+                <textarea class="form-control" id="additionalInfo" rows="6"></textarea>
               </div>
               <button type="button" id="btnSubmit" class="btn btn-primary">Generate Email</button>
             </form>
