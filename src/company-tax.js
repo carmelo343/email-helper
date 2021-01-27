@@ -6,7 +6,9 @@ const path = require('path');
 //const replace = require('replace-in-file');
 const { render, renderFile } = require('template-file');
 const fs = require('fs');
-const emlTemplatePath = process.env.PWD + '/eml-templates/';
+
+const templatePath = process.cwd() + '/eml-templates/';
+//const templatePath = process.cwd() + '/resources/app/eml-templates/';
 
 let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\n{{body}}"
 
@@ -14,14 +16,14 @@ $(function () {
 
   $('#btnSubmit').on('click', function () {
     let formData = getFormData();
-    let email = JSON.parse(fs.readFileSync(emlTemplatePath + 'company-tax.json'));
+    let email = JSON.parse(fs.readFileSync(templatePath + 'company-tax.json'));
 
     email.subject = render(email.subject, formData);
     email.body = render(email.body, formData);
 
     let emlStr = render(emlSkeleton, email);
-    fs.writeFileSync(emlTemplatePath + 'company-tax.eml', emlStr);
-    shell.openPath(emlTemplatePath + 'company-tax.eml');
+    fs.writeFileSync(templatePath + 'company-tax.eml', emlStr);
+    shell.openPath(templatePath + 'company-tax.eml');
 
   });
 
