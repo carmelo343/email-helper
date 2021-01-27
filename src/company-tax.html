@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
   <title>Email Helper</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
   <link href="main.css" rel="stylesheet">
 
 </head>
@@ -56,7 +57,8 @@
       </nav>
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">Company Income Tax Return</h1>
         </div>
 
@@ -78,13 +80,16 @@
                 <input type="date" id="financialYear" class="col-sm form-control">
               </div>
               <div class="row mb-3">
-                <label class="col-sm-2 form-label">Payable: </label>
-                <input type="text" id="amountPayable" class="col-sm form-control" placeholder="Amount">
+                <label class="col-sm-2 form-label">Payable/Refundable: </label>
+                <input type="text" id="taxAmount" class="col-sm form-control" placeholder="Amount">
+                <div class="col-sm">
+                  <input type="radio" id="payable" name="taxType" value="payable">
+                  <label for="payable">Payable</label><br>
+                  <input type="radio" id="refundable" name="taxType" value="refundable">
+                  <label for="refundable0">Refundable</label><br>
+                </div>
               </div>
-              <div class="row mb-3">
-                <label class="col-sm-2 form-label">Refundable: </label>
-                <input type="text" id="amountRefundable" class="col-sm form-control" placeholder="Amount">
-              </div>
+              
               <div class="mb-3">
                 <label class="form-label">Additional Info</label>
                 <textarea class="form-control" id="additionalInfo" rows="3"></textarea>

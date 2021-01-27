@@ -30,15 +30,16 @@ $(function () {
 });
 
 function getFormData() {
-  var data = {
+  let data = {
     clientFirstName: $('#clientFirstName').val(),
     clientLastName: $('#clientLastName').val(),
     companyName: $('#companyName').val(),
     companyEntityType: $('#companyEntityType').val(),
     financialYear: $('#financialYear').val(),
-    amountPayable: $('#amountPayable').val(),
-    amountRefundable: $('#amountRefundable').val(),
-    additionalInfo: $('#additionalInfo').val(),
+    taxAmount: $('#taxAmount').val(),
+    taxType: $("input[name='taxType']:checked").val(),
+    additionalInfo: $('#additionalInfo').val()
   }
+  
   return data;
 }
