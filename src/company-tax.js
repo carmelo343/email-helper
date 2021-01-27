@@ -6,6 +6,7 @@ const path = require('path');
 //const replace = require('replace-in-file');
 const { render, renderFile } = require('template-file');
 const fs = require('fs');
+const { error } = require('console');
 
 const templatePath = process.cwd() + '/eml-templates/';
 //const templatePath = process.cwd() + '/resources/app/eml-templates/';
@@ -13,6 +14,15 @@ const templatePath = process.cwd() + '/eml-templates/';
 let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\n{{body}}"
 
 $(function () {
+
+  $('input[name=taxType]').on("change", function() {
+    if($(this).val() === 'payable') {
+      $('#payableDueDateDiv').show();
+    }
+    else {
+      $('#payableDueDateDiv').hide();
+    }
+  });
 
   $('#btnSubmit').on('click', function () {
     let formData = getFormData();
@@ -37,17 +47,18 @@ function getFormData() {
     companyEntityType: $('#companyEntityType').val(),
     financialYear: $('#financialYear').val(),
     taxAmount: $('#taxAmount').val(),
-    taxType: $("input[name='taxType']:checked").val(),
+    taxType: $('input[name="taxType"]:checked').val(),
+    payableDueDate: $('#payableDueDate').val(),
     additionalInfo: $('#additionalInfo').val()
   }
 
-  if(data.taxType === 'refundable') {
+  if (data.taxType === 'refundable') {
     data.confirmBank = " Please confirm bank details.";
     data.signPartB = " and Part B";
   }
-  else if(data.taxType === 'payable') {
-    data.payableDueDate = " DUE " + data.financialYear;
+  else if (data.taxType === 'payable') {
+    data.payableDueDate = " DUE " + data.payableDueDate;
   }
-  
+
   return data;
 }
