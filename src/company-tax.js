@@ -40,6 +40,14 @@ function getFormData() {
     taxType: $("input[name='taxType']:checked").val(),
     additionalInfo: $('#additionalInfo').val()
   }
+
+  if(data.taxType === 'refundable') {
+    data.confirmBank = " Please confirm bank details.";
+    data.signPartB = " and Part B";
+  }
+  else if(data.taxType === 'payable') {
+    data.payableDueDate = " DUE " + data.financialYear;
+  }
   
   return data;
 }
