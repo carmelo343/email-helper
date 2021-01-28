@@ -67,7 +67,7 @@ function getFormData() {
   }
 
   if (data.taxType === 'refundable') {
-    data.confirmBank = " Please confirm bank details.";
+    data.confirmBank = "(Please confirm bank details)";
     data.signPartB = " and Part B";
   }
   else if (data.taxType === 'payable') {
