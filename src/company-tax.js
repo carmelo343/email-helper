@@ -20,9 +20,11 @@ $(function () {
   $('input[name=taxType]').on("change", function () {
     if ($(this).val() === 'payable') {
       $('#payableDueDateDiv').show();
+      $('#payableDueDate').prop('required', true);
     }
     else {
       $('#payableDueDateDiv').hide();
+      $('#payableDueDate').prop('required', false);
     }
   });
 
@@ -35,7 +37,7 @@ $(function () {
     }
   });
 
-  $('#btnSubmit').on('click', function () {
+  $('#companyTaxForm').on('submit', function () {
     let formData = getFormData();
     let email = JSON.parse(fs.readFileSync(templatePath + 'company-tax.json'));
 
@@ -67,7 +69,7 @@ function getFormData() {
   }
 
 
-  
+
 
   if (data.taxType === 'refundable') {
     data.confirmBank = "(Please confirm bank details)";
@@ -102,7 +104,7 @@ function clearForm(formId) {
 function formatDate(date) {
   let formattedDate = new Date(date);
   let options = { day: 'numeric', month: 'short', year: 'numeric' };
-  
+
   formattedDate = formattedDate.toLocaleDateString("en-US", options).replace(',', '');
   let dateArray = formattedDate.split(' ');
   formattedDate = `${dateArray[1]}-${dateArray[0]}-${dateArray[2]}`

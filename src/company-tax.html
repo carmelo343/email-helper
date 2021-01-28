@@ -67,7 +67,7 @@
             <div class="form-group form-row">
               <label class="col-sm-2 col-form-label">Client:</label>
               <div class="col">
-                <input type="text" id="clientFirstName" class="form-control" placeholder="Given Name">
+                <input type="text" id="clientFirstName" class="form-control" placeholder="Given Name" required>
               </div>
               <div class="col">
                 <input type="text" id="clientLastName" class="form-control" placeholder="Surname">
@@ -77,10 +77,10 @@
             <div class="form-group form-row">
               <label class="col-sm-2 form-label">Company: </label>
               <div class="col">
-                <input type="text" id="companyName" class="col-sm form-control" placeholder="Company Name">
+                <input type="text" id="companyName" class="col-sm form-control" placeholder="Company Name" required>
               </div>
               <div class="col">
-                <input type="text" id="companyEntityType" class="col-sm form-control" placeholder="Entity Type">
+                <input type="text" id="companyEntityType" class="col-sm form-control" placeholder="Entity Type" required>
               </div>
             </div>
 
@@ -88,10 +88,10 @@
               <label class="col-sm-2 form-label">Payable/Refundable: </label>
               <div class="col-3">
                 <input type="text" id="taxAmount" data-type="currency" class="col-sm form-control" placeholder="Amount" 
-                       pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$">
+                       pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" required>
               </div>
               <div class="col-2">
-                <input type="radio" id="payable" name="taxType" value="payable">
+                <input type="radio" id="payable" name="taxType" value="payable" required>
                 <label for="payable">Payable</label><br>
                 <input type="radio" id="refundable" name="taxType" value="refundable">
                 <label for="refundable">Refundable</label>
@@ -102,11 +102,10 @@
               </div>
             </div>
             
-
             <div class="form-group form-row">
               <label class="col-sm-2 form-label">Financial Year:</label>
               <div class="col">
-                <select class="col-3 custom-select" id="financialYear">
+                <select class="col-3 custom-select" id="financialYear" required>
                   <option value="" disabled selected>-- Select Year --</option>
                 </select>
               </div>
@@ -120,7 +119,7 @@
               
 
 
-            <button type="button" id="btnSubmit" class="btn btn-primary">Generate Email</button>
+            <button type="submit" id="btnSubmit" class="btn btn-primary">Generate Email</button>
           </form>
         </div>
       </main>
