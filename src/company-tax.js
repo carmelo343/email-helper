@@ -63,15 +63,18 @@ function getFormData() {
     taxAmount: $('#taxAmount').val(),
     taxType: $('input[name="taxType"]:checked').val(),
     payableDueDate: $('#payableDueDate').val(),
-    additionalInfo: $('#additionalInfo').val().replace(/\r\n|\r|\n/g,"</br>")
+    additionalInfo: $('#additionalInfo').val().replace(/\r\n|\r|\n/g, "</br>")
   }
+
+
+  
 
   if (data.taxType === 'refundable') {
     data.confirmBank = "(Please confirm bank details)";
     data.signPartB = " and Part B";
   }
   else if (data.taxType === 'payable') {
-    data.payableDueDate = " DUE " + data.payableDueDate;
+    data.payableDueDate = " DUE " + formatDate(data.payableDueDate);
   }
 
   return data;
@@ -79,8 +82,8 @@ function getFormData() {
 
 function initFinancialYearSelect() {
   let current = new Date().getFullYear();
-  let min = current - 10;
-  let max = current + 10;
+  let min = current - 5;
+  let max = current + 5;
   let select = $('#financialYear');
 
   for (let i = min; i <= max; i++) {
@@ -96,6 +99,16 @@ function clearForm(formId) {
   $('#payableDueDateDiv').hide();
 }
 
+function formatDate(date) {
+  let formattedDate = new Date(date);
+  let options = { day: 'numeric', month: 'short', year: 'numeric' };
+  
+  formattedDate = formattedDate.toLocaleDateString("en-US", options).replace(',', '');
+  let dateArray = formattedDate.split(' ');
+  formattedDate = `${dateArray[1]}-${dateArray[0]}-${dateArray[2]}`
+
+  return formattedDate;
+}
 
 
 function formatNumber(n) {
