@@ -6,6 +6,7 @@ const path = require('path');
 //const replace = require('replace-in-file');
 const { render, renderFile } = require('template-file');
 const fs = require('fs');
+const { clear } = require('console');
 
 const templatePath = process.cwd() + '/eml-templates/';
 //const templatePath = process.cwd() + '/resources/app/eml-templates/';
@@ -35,6 +36,9 @@ $(function () {
     let emlStr = render(emlSkeleton, email);
     fs.writeFileSync(templatePath + 'company-tax.eml', emlStr);
     shell.openPath(templatePath + 'company-tax.eml');
+
+
+    clearForm('companyTaxForm');
 
   });
 
@@ -76,4 +80,9 @@ function initFinancialYearSelect() {
       text: i
     }));
   }
+}
+
+function clearForm(formId) {
+  document.getElementById(formId).reset();
+  $('#payableDueDateDiv').hide();
 }
