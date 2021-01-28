@@ -65,7 +65,7 @@ function getFormData() {
     taxAmount: $('#taxAmount').val(),
     taxType: $('input[name="taxType"]:checked').val(),
     payableDueDate: $('#payableDueDate').val(),
-    additionalInfo: $('#additionalInfo').val().replace(/\r\n|\r|\n/g, "</br>")
+    additionalInfo: $('#additionalInfo').val().replace(/\r\n|\r|\n/g, "<br>")
   }
 
 
