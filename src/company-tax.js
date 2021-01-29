@@ -11,7 +11,7 @@ const { clear } = require('console');
 const templatePath = process.cwd() + '/eml-templates/';
 //const templatePath = process.cwd() + '/resources/app/eml-templates/';
 
-let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\n{{body}}"
+let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\n{{body}}<br><br><br><br><br>{{signature}}"
 
 $(function () {
 
@@ -40,9 +40,12 @@ $(function () {
   $('#companyTaxForm').on('submit', function () {
     let formData = getFormData();
     let email = JSON.parse(fs.readFileSync(templatePath + 'company-tax.json'));
+    let signatureHTML = fs.readFileSync(templatePath + 'signature.html');
+    let signature = { signature: signatureHTML };
 
     email.subject = render(email.subject, formData);
     email.body = render(email.body, formData);
+    email.signature = render(email.signature, signature);
 
     let emlStr = render(emlSkeleton, email);
     fs.writeFileSync(templatePath + 'company-tax.eml', emlStr);
