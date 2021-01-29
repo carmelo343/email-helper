@@ -11,7 +11,7 @@ const { clear } = require('console');
 const templatePath = process.cwd() + '/eml-templates/';
 //const templatePath = process.cwd() + '/resources/app/eml-templates/';
 
-let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\n{{body}}<br><br><br><br><br>{{signature}}"
+let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\n{{body}}<br><br><br>{{signature}}"
 
 $(function () {
 
