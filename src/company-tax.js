@@ -15,7 +15,7 @@ let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\
 
 $(function () {
 
-  initFinancialYearSelect();
+  //initFinancialYearSelect();
 
   $('input[name=taxType]').on("change", function () {
     if ($(this).val() === 'payable') {
