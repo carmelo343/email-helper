@@ -1,16 +1,9 @@
 const $ = jQuery = require('jquery');
-const electron = require('electron');
-const { shell } = require('electron');
-const { get } = require('http');
-const path = require('path');
-const { render, renderFile } = require('template-file');
 const fs = require('fs');
-const { clear } = require('console');
 const Quill = require('quill');
 
 const templatePath = process.cwd() + '/eml-templates/';
 //const templatePath = process.cwd() + '/resources/app/eml-templates/';
-
 
 $(function () {
   var quilleditor = new Quill('#editor-container', {
@@ -34,5 +27,3 @@ $(function () {
   });
 
 });
-
-

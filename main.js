@@ -1,6 +1,6 @@
-require('electron-reloader')(module)
-
-const { app, BrowserWindow } = require('electron')
+require('electron-reloader')(module);
+const { app, BrowserWindow, ipcMain } = require('electron');
+const emailFactory = require('./email-factory');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -9,23 +9,27 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true
     }
-  })
+  });
 
-  win.loadFile('src/index.html')
+  win.loadFile('renderer/index.html');
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow()
+    createWindow();;
   }
-})
+});
 
 
+ipcMain.on('create-email', (e, formData) => {
+  let email = emailFactory.createEmail(formData);
+  e.sender.send('create-email-success', email);
+});
