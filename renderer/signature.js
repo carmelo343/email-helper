@@ -18,6 +18,8 @@ $(function () {
     theme: 'snow'
   });
 
+  quilleditor.root.innerHTML = fs.readFileSync(templatePath + 'signature.html');
+
 
   $('#btnSave').on('click', function () {
     let html = quilleditor.root.innerHTML;
