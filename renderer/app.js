@@ -1,3 +1,32 @@
+const $ = jQuery = require('jquery');
+const serializeJSON = require('jquery-serializejson');
+
+
+// Format currency input box
+$("input[data-type='currency']").on({
+  keyup: function () {
+    formatCurrency($(this));
+  },
+  blur: function () {
+    formatCurrency($(this), "blur");
+  }
+});
+
+$('input[name=taxType]').on("change", function () {
+  if ($(this).val() === 'payable') {
+    $('#payableDueDateDiv').show();
+    $('#payableDueDate').prop('required', true);
+  }
+  else {
+    $('#payableDueDateDiv').hide();
+    $('#payableDueDate').prop('required', false);
+  }
+});
+
+exports.getFormData = form => {
+  return form.serializeJSON();
+}
+
 exports.formatDate = date => {
   let formattedDate = new Date(date);
   let options = { day: 'numeric', month: 'short', year: 'numeric' };
@@ -9,7 +38,7 @@ exports.formatDate = date => {
   return formattedDate;
 }
 
-exports.formatCurrency = (input, blur) => {
+formatCurrency = (input, blur) => {
   // appends $ to value, validates decimal side
   // and puts cursor back in right position.
 

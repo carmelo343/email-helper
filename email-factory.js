@@ -6,7 +6,7 @@ const templatePath = process.cwd() + '/eml-templates/';
 //const templatePath = process.cwd() + '/resources/app/eml-templates/';
 let emlSkeleton = "Subject: {{subject}}\nX-Unsent: 1\nContent-Type: text/html\n\n{{body}}<br><br><br>{{signature}}"
 
-exports.createEmail = formData => {
+exports.createCompanyTaxEmail = formData => {
   let email = JSON.parse(fs.readFileSync(templatePath + 'company-tax.json'));
   let signatureHTML = fs.readFileSync(templatePath + 'signature.html');
   let signature = { signature: signatureHTML };
@@ -18,4 +18,23 @@ exports.createEmail = formData => {
   let emlStr = render(emlSkeleton, email);
   fs.writeFileSync(templatePath + 'company-tax.eml', emlStr);
   shell.openPath(templatePath + 'company-tax.eml');
+}
+
+exports.createPersonalTaxEmail = data => {
+  let subjectHTML = fs.readFileSync(templatePath + 'personal-tax/subject.html', 'utf8');
+  let bodyHTML = fs.readFileSync(templatePath + 'personal-tax/body.html', 'utf8');
+  let signatureHTML = fs.readFileSync(templatePath + 'signature.html', 'utf8');
+
+  let email = { };
+  email.subject = render(subjectHTML, data);
+  email.body = render(bodyHTML, data);
+  email.signature  = signatureHTML;
+
+  fs.copyFileSync(templatePath + 'email.eml', templatePath + 'personal-tax/email.eml');
+  let emlTemplate = fs.readFileSync(templatePath + 'personal-tax/email.eml', 'utf8');
+  let emlStr = render(emlTemplate, email);
+  fs.writeFileSync(templatePath + 'personal-tax/email.eml', emlStr);
+
+  shell.openPath(templatePath + 'personal-tax/email.eml');
+
 }

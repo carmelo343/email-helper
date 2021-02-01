@@ -5,28 +5,7 @@ const app = require('./app');
 
 $('#companyTaxForm').on('submit', e => {
   let formData = getFormData();
-  ipcRenderer.send('create-email', formData);
-});
-
-// Format currency input box
-$("input[data-type='currency']").on({
-  keyup: function () {
-    app.formatCurrency($(this));
-  },
-  blur: function () {
-    app.formatCurrency($(this), "blur");
-  }
-});
-
-$('input[name=taxType]').on("change", function () {
-  if ($(this).val() === 'payable') {
-    $('#payableDueDateDiv').show();
-    $('#payableDueDate').prop('required', true);
-  }
-  else {
-    $('#payableDueDateDiv').hide();
-    $('#payableDueDate').prop('required', false);
-  }
+  ipcRenderer.send('create-company-tax-email', formData);
 });
 
 function getFormData() {

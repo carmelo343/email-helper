@@ -1,5 +1,0 @@
-Subject: {{subject}}
-X-Unsent: 1
-Content-Type: text/html
-
-{{body}}

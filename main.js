@@ -29,7 +29,11 @@ app.on('activate', () => {
 });
 
 
-ipcMain.on('create-email', (e, formData) => {
-  let email = emailFactory.createEmail(formData);
-  e.sender.send('create-email-success', email);
+ipcMain.on('create-company-tax-email', (e, formData) => {
+  let email = emailFactory.createCompanyTaxEmail(formData);
+  //e.sender.send('create-email-success', email);
+});
+
+ipcMain.on('create-personal-tax-email', (e, data) => {
+  let email = emailFactory.createPersonalTaxEmail(data);
 });
