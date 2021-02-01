@@ -56,3 +56,21 @@ exports.createBasEmail = data => {
 
   shell.openPath(templatePath + 'bas/email.eml');
 }
+
+exports.createIasEmail = data => {
+  let subjectHTML = fs.readFileSync(templatePath + 'ias/subject.html', 'utf8');
+  let bodyHTML = fs.readFileSync(templatePath + 'ias/body.html', 'utf8');
+  let signatureHTML = fs.readFileSync(templatePath + 'signature.html', 'utf8');
+
+  let email = { };
+  email.subject = render(subjectHTML, data);
+  email.body = render(bodyHTML, data);
+  email.signature  = signatureHTML;
+
+  fs.copyFileSync(templatePath + 'email.eml', templatePath + 'ias/email.eml');
+  let emlTemplate = fs.readFileSync(templatePath + 'ias/email.eml', 'utf8');
+  let emlStr = render(emlTemplate, email);
+  fs.writeFileSync(templatePath + 'ias/email.eml', emlStr);
+
+  shell.openPath(templatePath + 'ias/email.eml');
+}

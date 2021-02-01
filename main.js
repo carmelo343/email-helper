@@ -42,3 +42,7 @@ ipcMain.on('create-personal-tax-email', (e, data) => {
 ipcMain.on('create-bas-email', (e, data) => {
   let email = emailFactory.createBasEmail(data);
 });
+
+ipcMain.on('create-ias-email', (e, data) => {
+  let email = emailFactory.createIasEmail(data);
+});
