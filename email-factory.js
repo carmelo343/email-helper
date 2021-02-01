@@ -38,3 +38,21 @@ exports.createPersonalTaxEmail = data => {
   shell.openPath(templatePath + 'personal-tax/email.eml');
 
 }
+
+exports.createBasEmail = data => {
+  let subjectHTML = fs.readFileSync(templatePath + 'bas/subject.html', 'utf8');
+  let bodyHTML = fs.readFileSync(templatePath + 'bas/body.html', 'utf8');
+  let signatureHTML = fs.readFileSync(templatePath + 'signature.html', 'utf8');
+
+  let email = { };
+  email.subject = render(subjectHTML, data);
+  email.body = render(bodyHTML, data);
+  email.signature  = signatureHTML;
+
+  fs.copyFileSync(templatePath + 'email.eml', templatePath + 'bas/email.eml');
+  let emlTemplate = fs.readFileSync(templatePath + 'bas/email.eml', 'utf8');
+  let emlStr = render(emlTemplate, email);
+  fs.writeFileSync(templatePath + 'bas/email.eml', emlStr);
+
+  shell.openPath(templatePath + 'bas/email.eml');
+}

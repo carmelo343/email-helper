@@ -1,5 +1,6 @@
 require('electron-reloader')(module);
 const { app, BrowserWindow, ipcMain } = require('electron');
+const { data } = require('jquery');
 const emailFactory = require('./email-factory');
 
 function createWindow() {
@@ -36,4 +37,8 @@ ipcMain.on('create-company-tax-email', (e, formData) => {
 
 ipcMain.on('create-personal-tax-email', (e, data) => {
   let email = emailFactory.createPersonalTaxEmail(data);
+});
+
+ipcMain.on('create-bas-email', (e, data) => {
+  let email = emailFactory.createBasEmail(data);
 });

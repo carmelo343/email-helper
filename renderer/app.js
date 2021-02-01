@@ -23,6 +23,19 @@ $('input[name=taxType]').on("change", function () {
   }
 });
 
+exports.formatData = data => {
+  debugger;
+  if (data.taxType === 'refundable') {
+    data.confirmBank = "(Please confirm bank details)";
+    data.signPartB = " and Part B";
+  }
+  else if (data.taxType === 'payable') {
+    data.payableDueDate = " DUE " + this.formatDate(data.payableDueDate);
+  }
+
+  return data;
+}
+
 exports.getFormData = form => {
   return form.serializeJSON();
 }
