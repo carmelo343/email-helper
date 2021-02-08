@@ -74,3 +74,7 @@ exports.createIasEmail = data => {
 
   shell.openPath(templatePath + 'ias/email.eml');
 }
+
+exports.createPayrollEmail = data => {
+  
+}

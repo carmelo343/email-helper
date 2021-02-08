@@ -46,3 +46,7 @@ ipcMain.on('create-bas-email', (e, data) => {
 ipcMain.on('create-ias-email', (e, data) => {
   let email = emailFactory.createIasEmail(data);
 });
+
+ipcMain.on('create-payroll-email', (e, data) => {
+  let email = emailFactory.createPayrollEmail(data);
+});
