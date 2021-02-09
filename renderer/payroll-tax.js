@@ -58,6 +58,15 @@ $('#payrollTaxForm').on('submit', function () {
   ipcRenderer.send('create-payroll-email', data);
 });
 
+$('input[name=taxType]').on("change", function () {
+  if ($(this).val() === 'Payable') {
+    $('.paymentType').show();
+  }
+  else {
+    $('.paymentType').hide();
+  }
+});
+
 function resetTableInput() {
   $('#state').val('');
   $('#taxAmount').val('');
