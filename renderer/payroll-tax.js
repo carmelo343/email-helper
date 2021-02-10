@@ -1,5 +1,4 @@
 const { ipcRenderer } = require('electron');
-const { stat } = require('fs');
 const $ = jQuery = require('jquery');
 const app = require('./app');
 
@@ -14,6 +13,8 @@ $('#addTaxItem').on('click', function (event) {
   let taxAmount = $('#taxAmount').val();
   let taxType = $('input[name="taxType"]:checked').val();
   let paymentType = $('input[name="paymentType"]:checked').val();
+  let scheduledDateDay = $('#scheduledDateDay').val();
+  let scheduledDateMonth = $('#scheduledDateMonth').val();
 
   if (!isTaxItemValid(state, taxAmount, taxType, paymentType)) {
     alert("Please fill out all fields");
@@ -60,10 +61,23 @@ $('#payrollTaxForm').on('submit', function () {
 
 $('input[name=taxType]').on("change", function () {
   if ($(this).val() === 'Payable') {
-    $('.paymentType').show();
+    $('#directDebit').prop('disabled', false);
+    $('#paymentRequired').prop('disabled', false);
   }
   else {
-    $('.paymentType').hide();
+    $('#directDebit').prop('disabled', true);
+    $('#paymentRequired').prop('disabled', true);
+  }
+});
+
+$('input[name=paymentType]').on("change", function () {
+  if ($(this).val() === 'Direct debit') {
+    $('#scheduledDateDay').prop('disabled', false);
+    $('#scheduledDateMonth').prop('disabled', false);
+  }
+  else {
+    $('#scheduledDateDay').prop('disabled', true);
+    $('#scheduledDateMonth').prop('disabled', true);
   }
 });
 
@@ -77,13 +91,12 @@ function resetTableInput() {
 function isTaxItemValid(...args) {
   let isValid = true;
   for (let i = 0; i < args.length; i++) {
-    if(!args[i]) {
+    if (!args[i]) {
       isValid = false;
       break;
     }
   }
 
   return isValid;
-  //debugger;
 }
 
