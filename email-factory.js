@@ -76,5 +76,11 @@ exports.createIasEmail = data => {
 }
 
 exports.createPayrollEmail = data => {
-  
+  let taxItemsHtml = [];
+  taxItemsHtml.push('<ul>');
+  data.taxItems.forEach(item => {
+    taxItemsHtml.push(
+      `<li>${item.state} Payroll Tax Return & Payment - `
+    )
+  });
 }

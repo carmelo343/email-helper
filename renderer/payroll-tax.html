@@ -128,18 +128,13 @@
             <br>
 
 
-
-
-
-
-
             <table id="taxItemTable" class="table table-bordered">
               <thead>
                 <tr>
                   <th style="width: 12%;" scope="col">State</th>
                   <th style="width: 15%;" scope="col">Amount</th>
                   <th style="width: 15%;" scope="col">Payable/Refundable</th>
-                  <th style="width: 20%; display: none;" scope="col" class="paymentType">Payment Type</th>
+                  <th style="width: 30%; display: none;" scope="col" class="paymentType">Payment Type</th>
                   <th style="width: 5%;" scope="col">Action</th>
                 </tr>
               </thead>
@@ -176,7 +171,7 @@
                   </td>
                   <td class="paymentType" style="display: none;">
                     <div class="row">
-                      <div class="col-sm">
+                      <div class="col-sm-4">
                         <div class="form-check">
                           <input class="form-check-input" type="radio" name="paymentType" id="directDebit"
                             value="Direct debit">
@@ -192,7 +187,38 @@
                           </label>
                         </div>
                       </div>
-                      <div class="col-sm">s</div>
+                      <div class="col-sm-3">
+                        <select class="col-4 custom-select" id="dueDateDay" name="dueDate" required>
+                          <option value="" selected disabled>-- Select Month --</option>
+                          <option value="Jan">January</option>
+                          <option value="Feb">February</option>
+                          <option value="Mar">March</option>
+                          <option value="Apr">April</option>
+                          <option value="May">May</option>
+                          <option value="Jun">June</option>
+                          <option value="Jul">July</option>
+                          <option value="Aug">August</option>
+                          <option value="Sep">September</option>
+                          <option value="Oct">October</option>
+                          <option value="Nov">November</option>
+                          <option value="Dec">December</option>
+                        </select>
+                        <select class="col-4 custom-select" id="dueDateDay" name="dueDate" required>
+                          <option value="" selected disabled>-- Select Month --</option>
+                          <option value="Jan">January</option>
+                          <option value="Feb">February</option>
+                          <option value="Mar">March</option>
+                          <option value="Apr">April</option>
+                          <option value="May">May</option>
+                          <option value="Jun">June</option>
+                          <option value="Jul">July</option>
+                          <option value="Aug">August</option>
+                          <option value="Sep">September</option>
+                          <option value="Oct">October</option>
+                          <option value="Nov">November</option>
+                          <option value="Dec">December</option>
+                        </select>
+                      </div>
                     </div>
                   </td>
                   <td><button id="addTaxItem" class="btn btn-secondary" formnovalidate>Add</button></td>
